@@ -1,0 +1,31 @@
+# App files
+
+angular2-spaces/*
+lib/.baseDir.ts
+.tscache
+typings/*
+
+# Node generated files
+
+node_modules
+npm-debug.log
+
+# OS generated files
+
+Thumbs.db
+.DS_Store
+
+# Ignored files
+
+*.js
+*.map
+*.d.ts
+
+# IDE files
+
+.c9
+
+# Other non-sense
+
+00__*
+bcs*
