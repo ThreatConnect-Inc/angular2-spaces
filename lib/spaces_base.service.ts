@@ -82,8 +82,11 @@ export class SpacesBaseService {
          */
          if (this.initialized) {
             // spaces need to be un-encoded from '+' before decoding
-            let param = this._params[name].replace('+', ' ');
-            return decodeURIComponent(param);
+            let param = this._params[name];
+            if (param != undefined) {
+                param = decodeURIComponent(param.replace('+', ' '));
+            }
+            return param;
          } else {
             this.logging.warn('Service is not intialized.', '');
             return '';
