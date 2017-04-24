@@ -16,7 +16,7 @@
     }
   ],
   "dependencies": {
-    "ng2-device-detector": "^0.1.0",
+    "ngx-bowser": "^0.1.0",
     "primeng": "2.0.0",
     "primeui": "^4.1.15"
   },
@@ -75,7 +75,6 @@
     "url": "git@bitbucket.org:threatconnectinc/angular2-spaces.git"
   },
   "scripts": {
-    "postinstall": "tsc",
     "test": "npm test"
   },
   "typings": "./main.ts",
