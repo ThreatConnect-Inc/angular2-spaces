@@ -23,5 +23,8 @@
     ".c9",
     "dist",
     "node_modules"
+  ],
+  "files": [
+    "main.ts"
   ]
 }
