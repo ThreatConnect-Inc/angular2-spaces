@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "declaration": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "module": "commonjs",
@@ -17,9 +16,5 @@
     ".c9",
     "dist",
     "node_modules"
-  ],
-  "files": [
-    "./typings/index.d.ts",
-    "./main.ts"
   ]
 }
