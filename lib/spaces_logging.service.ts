@@ -40,13 +40,13 @@ export class SpacesLoggingService {
 
     constructor(
         private bowser: BowserService
-    ) {
+    ) { 
         this.browser = this.bowser.bowser.name;
         this.info('Browser', this.browser);
     }
 
     ngOnInit() { /* empty block */ }
-
+    
     get logLevel(): string {
         /**
          * Return the logging level
@@ -55,7 +55,7 @@ export class SpacesLoggingService {
         let levels = Object.keys(this.levels);
         return levels[this._logLevel];
     }
-
+    
     set logLevel(level: string) {
         /**
          * Set the logging level
@@ -65,14 +65,14 @@ export class SpacesLoggingService {
             this._logLevel = this.levels[level];
         }
     }
-
+    
     public disableColor(): void {
         /**
          * Disable colors in console logging
          */
         this.useColor = false;
     }
-
+    
     public criticalColors(
         background: string,
         color: string
@@ -85,7 +85,7 @@ export class SpacesLoggingService {
         this.criticalBackground = background;
         this.criticalColor = color;
     }
-
+    
     public debugColors(
         background: string,
         color: string
@@ -98,7 +98,7 @@ export class SpacesLoggingService {
         this.debugBackground = background;
         this.debugColor = color;
     }
-
+    
     public errorColors(
         background: string,
         color: string
@@ -111,7 +111,7 @@ export class SpacesLoggingService {
         this.errorBackground = background;
         this.errorColor = color;
     }
-
+    
     public importantColors(
         background: string,
         color: string
@@ -124,7 +124,7 @@ export class SpacesLoggingService {
         this.importantBackground = background;
         this.importantColor = color;
     }
-
+    
     public infoColors(
         background: string,
         color: string
@@ -137,7 +137,7 @@ export class SpacesLoggingService {
         this.infoBackground = background;
         this.infoColor = color;
     }
-
+    
     public warnColors(
         background: string,
         color: string
@@ -150,7 +150,7 @@ export class SpacesLoggingService {
         this.warnBackground = background;
         this.warnColor = color;
     }
-
+    
     public methodColor(
         background: string,
         color: string,
@@ -177,7 +177,7 @@ export class SpacesLoggingService {
             }
         }
     }
-
+    
     public moduleColor(
         background: string,
         color: string,
@@ -203,7 +203,7 @@ export class SpacesLoggingService {
             }
         }
     }
-
+    
     public log(
         level: string,
         title: string,
@@ -226,20 +226,20 @@ export class SpacesLoggingService {
          * @param {number} methodIndex - The index of the method in the stack
          */
         let levelNo = this.levels[level];
-
+        
         if (levelNo >= this._logLevel) {
             let logStack = (new Error).stack.split('\n');
-
+            
             if (methodIndex == undefined) {
                 methodIndex = this.methodIndex();
             }
             // console.log('methodIndex', methodIndex);
             let caller = this.parseLogLine(logStack[methodIndex]);
-            if (this.browser == 'chrome' && caller.module === 'SafeSubscriber') {
+            if (this.browser == 'chrome' &&  caller.module === 'SafeSubscriber') {
                 // best try to handle chrome stack manipulation
                 caller = this.parseLogLine(logStack[logStack.length - 1]);
             }
-
+            
             let c = this.useColor ? ' %c ' : ' ';
             let header = [
                 level.toUpperCase(),
@@ -248,19 +248,19 @@ export class SpacesLoggingService {
                 c,
                 title,
                 ' '].join(' ');
-
+            
             // update colors if module color defined
             if (this.moduleColors[caller.module]) {
                 bg = this.moduleColors[caller.module].bg;
                 color = this.moduleColors[caller.module].color;
             }
-
+            
             // update colors if method color defined
             if (this.methodColors[caller.method]) {
                 bg = this.methodColors[caller.method].bg;
                 color = this.methodColors[caller.method].color;
             }
-
+            
             // console log
             if (this.useColor) {
                 console.log(header, this.css(headerBg, header), this.css(bg, color), msg);
@@ -269,7 +269,7 @@ export class SpacesLoggingService {
             }
         }
     }
-
+    
     private getHeader(
         logLine: string
     ): string {
@@ -287,20 +287,20 @@ export class SpacesLoggingService {
         let fileName;
         let line;
         // console.log('logLine', logLine);
-
+        
         let divider1;
         let divider2;
-
+        
         switch (this.browser) {
             case 'chrome':
                 data = logLine.trim().match(/^at\s(?:new\s)?(\w+)(?:\.)?(\w+)?\s/) || [];
                 line_data = logLine.trim().match(/(\w+\.\w+)\:([0-9]+\:[0-9]+)/) || [];
-
+                
                 module = data[1];
                 method = data[2];
                 fileName = line_data[1];
                 line = line_data[2];
-
+                
                 header = '';
                 divider1 = '';
                 if (module) {
@@ -322,12 +322,12 @@ export class SpacesLoggingService {
             case 'firefox':
                 data = logLine.trim().match(/(\w+)\.(?:\w+)\.(\w+)@/) || [];
                 line_data = logLine.trim().match(/(\w+\.\w+)\:([0-9]+\:[0-9]+)/) || [];
-
+                
                 module = data[1];
                 method = data[2];
                 fileName = line_data[1];
                 line = line_data[2];
-
+                
                 header = '';
                 divider1 = '';
                 if (module) {
@@ -349,11 +349,11 @@ export class SpacesLoggingService {
             case 'safari':
                 data = logLine.trim().match(/^(\w+)@/) || [];
                 line_data = logLine.trim().match(/(\w+\.\w+)\:([0-9]+\:[0-9]+)/) || [];
-
+                
                 method = data[1];
                 fileName = line_data[1];
                 line = line_data[2];
-
+                
                 header = '';
                 divider1 = '';
                 if (method) {
@@ -370,10 +370,10 @@ export class SpacesLoggingService {
                 break;
             default:
                 this.warn('Browser not supported', this.browser);
-        }
+        } 
         return header;
     }
-
+    
     private parseLogLine(logLine: string): any {
         /**
          * Best effor to retrieve module, method, fileName, and line number from error stack.
@@ -387,7 +387,7 @@ export class SpacesLoggingService {
         let fileName;
         let line;
         // console.log('logLine', logLine);
-
+        
         // TODO - switch this to case statement to define regex so data and line_data are only set once.
         if (this.browser === 'chrome') {
             /* best effor at getting module, method, fileName and line number */
@@ -415,7 +415,7 @@ export class SpacesLoggingService {
             line: line
         }
     }
-
+    
     private methodIndex(): number {
         /**
          * Return the method index dependent on the browser.
@@ -434,10 +434,10 @@ export class SpacesLoggingService {
                 break;
             default:
                 this.warn('Browser not supported', this.browser);
-        }
+        } 
         return index;
     }
-
+    
     public critical(
         title: string,
         msg: any = '',
@@ -469,7 +469,7 @@ export class SpacesLoggingService {
          */
         this.log('debug', title, msg, bg, color, this.debugBackground, this.debugColor);
     }
-
+    
     public error(
         title: string,
         msg: any = '',
@@ -501,7 +501,7 @@ export class SpacesLoggingService {
          */
         this.log('info', title, msg, bg, color, this.infoBackground, this.infoColor);
     }
-
+    
     public important(
         title: string,
         msg: any = '',
@@ -535,7 +535,7 @@ export class SpacesLoggingService {
     }
 
     private css(
-        background: string,
+        background:string,
         color: string
     ): string {
         /**
