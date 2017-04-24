@@ -3,7 +3,6 @@
 angular2-spaces/*
 lib/.baseDir.ts
 .tscache
-typings/*
 
 # Node generated files
 
