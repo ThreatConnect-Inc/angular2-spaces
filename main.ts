@@ -32,4 +32,5 @@ export {
     SpacesRequestService,
     SpacesStorageService,
     SpacesUtilityService,
+    SpacesModule,
 }
