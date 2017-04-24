@@ -41,7 +41,7 @@ export class SpacesLoggingService {
     constructor(
         private bowser: BowserService
     ) { 
-        this.browser = this.bowser.bowser.name;
+        this.browser = this.bowser.bowser.name.toLowerCase();
         this.info('Browser', this.browser);
     }
 
