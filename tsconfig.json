@@ -16,5 +16,9 @@
     ".c9",
     "dist",
     "node_modules"
+  ],
+  "files": [
+    "./typings/index.d.ts",
+    "./main.ts"
   ]
 }
