@@ -8,9 +8,12 @@ import { SpacesStorageService } from './lib/spaces_storage.service';
 import { SpacesUtilityService } from './lib/spaces_utilities.service';
 
 // Third part
-import { Device } from 'ng2-device-detector';
+import { BowserModule } from 'ngx-bowser';
 
 @NgModule({
+    imports: [
+        BowserModule,
+    ],
     providers: [
         SpacesBaseService,
         SpacesLoggingService,
@@ -18,7 +21,6 @@ import { Device } from 'ng2-device-detector';
         SpacesRequestService,
         SpacesStorageService,
         SpacesUtilityService,
-        Device,
     ]
 })
 class SpacesModule { }

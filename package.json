@@ -16,7 +16,7 @@
     }
   ],
   "dependencies": {
-    "ng2-device-detector": "^0.1.0",
+    "ngx-bowser": "^0.1.0",
     "primeng": "2.0.0",
     "primeui": "^4.1.15"
   },
