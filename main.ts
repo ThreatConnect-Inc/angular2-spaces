@@ -7,6 +7,7 @@ import { SpacesRequestService } from './lib/spaces_request.service';
 import { SpacesStorageService } from './lib/spaces_storage.service';
 import { SpacesUtilityService } from './lib/spaces_utilities.service';
 
+// Third part
 import { BowserModule } from 'ngx-bowser';
 
 @NgModule({
@@ -20,7 +21,7 @@ import { BowserModule } from 'ngx-bowser';
         SpacesRequestService,
         SpacesStorageService,
         SpacesUtilityService,
-
+        
     ]
 })
 class SpacesModule { }
