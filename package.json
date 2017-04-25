@@ -78,6 +78,6 @@
     "postinstall": "tsc",
     "test": "npm test"
   },
-  "typings": "./main.ts",
+  "typings": "dist/main.d.ts",
   "version": "0.1.0"
 }
