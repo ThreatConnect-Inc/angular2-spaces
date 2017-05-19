@@ -164,7 +164,8 @@ export class SpacesLoggingService {
         if (!methodName) {
             // try to get method name from the stack
             let methodIndex = this.methodIndex();
-            let logStack = (new Error).stack.split('\n');
+            const error = new Error;
+            let logStack = error.stack ? error.stack.split('\n') : [];
             if (logStack.length > 0) {
                 let caller = this.parseLogLine(logStack[methodIndex]);
                 methodName = caller.method;
@@ -190,7 +191,8 @@ export class SpacesLoggingService {
          */
         if (!moduleName) {
             let methodIndex = this.methodIndex();
-            let logStack = (new Error).stack.split('\n');
+            const error = new Error;
+            let logStack = error.stack ? error.stack.split('\n') : [];
             if (logStack.length > 0) {
                 let caller = this.parseLogLine(logStack[methodIndex]);
                 moduleName = caller.module;
@@ -228,7 +230,8 @@ export class SpacesLoggingService {
         let levelNo = this.levels[level];
         
         if (levelNo >= this._logLevel) {
-            let logStack = ((new Error).stack || '').split('\n');
+            const error = new Error;
+            let logStack = error.stack ? error.stack.split('\n') : [];
             
             if (methodIndex == undefined) {
                 methodIndex = this.methodIndex();
