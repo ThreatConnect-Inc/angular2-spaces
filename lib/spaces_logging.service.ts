@@ -228,7 +228,7 @@ export class SpacesLoggingService {
         let levelNo = this.levels[level];
         
         if (levelNo >= this._logLevel) {
-            let logStack = (new Error).stack.split('\n');
+            let logStack = ((new Error).stack || '').split('\n');
             
             if (methodIndex == undefined) {
                 methodIndex = this.methodIndex();
