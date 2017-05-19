@@ -369,7 +369,7 @@ export class SpacesLoggingService {
                 }
                 break;
             default:
-                this.warn('Browser not supported', this.browser);
+                console.warn('Advanced logging is not supported in browser', this.browser);
         } 
         return header;
     }
@@ -433,7 +433,7 @@ export class SpacesLoggingService {
                 index = 2;
                 break;
             default:
-                this.warn('Browser not supported', this.browser);
+                console.warn('Advanced logging is not supported in browser', this.browser);
         } 
         return index;
     }
