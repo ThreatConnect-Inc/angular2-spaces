@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 
 /* Third-Party */
-import { Device } from 'ng2-device-detector';
+import { BowserService } from 'ngx-bowser';
 
 @Injectable()
 export class SpacesLoggingService {
@@ -39,9 +39,9 @@ export class SpacesLoggingService {
     }
 
     constructor(
-        private device: Device
+        private bowser: BowserService
     ) { 
-        this.browser = this.device.browser;
+        this.browser = this.bowser.bowser.name.toLowerCase();
         this.info('Browser', this.browser);
     }
 
