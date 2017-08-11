@@ -1,3 +1,9 @@
+##########
+DEPRECATED
+##########
+
+.. important:: Please Refer to updated App locate at https://github.com/ThreatConnect-Inc/spaces-ng.
+
 angular2-spaces
 ###############
 
